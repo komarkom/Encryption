@@ -6,19 +6,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>512</width>
-    <height>345</height>
+    <width>500</width>
+    <height>355</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#MainWindow
+{
+	background-color:rgb(255, 255, 255);	
+}</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QWidget" name="FirstPage" native="true">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>40</y>
       <width>511</width>
       <height>181</height>
      </rect>
@@ -27,189 +33,330 @@
      <property name="geometry">
       <rect>
        <x>410</x>
-       <y>140</y>
-       <width>75</width>
+       <y>130</y>
+       <width>80</width>
        <height>23</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#FirstNextButton
+{
+	background-color: rgb(170, 255, 0);
+	border-radius: 5px;
+	border: 5px rgb(170, 255, 0);
+    border-style: solid;
+}
+#FirstNextButton:hover
+{	
+	background-color:rgb(29, 150, 255);
+	border-radius: 5px;
+	border: 5px rgb(29, 150, 255);
+    border-style: solid;
+}</string>
      </property>
      <property name="text">
       <string>Next</string>
      </property>
     </widget>
-    <widget class="QWidget" name="verticalLayoutWidget_2">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>461</width>
-       <height>121</height>
+       <width>481</width>
+       <height>31</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QTextEdit" name="keyValue"/>
-        </item>
-        <item>
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>or</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="GeneratePushButton">
-          <property name="styleSheet">
-           <string notr="true">#GeneratePushButton
+       <widget class="QTextEdit" name="keyValue">
+        <property name="styleSheet">
+         <string notr="true">#keyValue
 {
-	background-color: rgb(0, 170, 255);
-}
-</string>
-          </property>
-          <property name="text">
-           <string>Generate Key</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+	background-color: rgb(248, 248, 248);
+}</string>
+        </property>
+       </widget>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QComboBox" name="comboBox"/>
-        </item>
-       </layout>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>or</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="GeneratePushButton">
+        <property name="styleSheet">
+         <string notr="true">#GeneratePushButton
+{
+	background-color: rgb(9, 202, 170);
+	border-radius: 5px;
+	border: 5px rgb(9, 202, 170);
+    border-style: solid;
+}
+#GeneratePushButton:hover
+{	
+	background-color:rgb(29, 150, 255);
+	border-radius: 5px;
+	border: 5px rgb(29, 150, 255);
+    border-style: solid;
+}</string>
+        </property>
+        <property name="text">
+         <string>Generate Key</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="SecondPage" native="true">
+    <widget class="QLabel" name="Type">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>511</width>
-       <height>301</height>
+       <x>10</x>
+       <y>90</y>
+       <width>101</width>
+       <height>31</height>
       </rect>
      </property>
-     <widget class="QWidget" name="horizontalLayoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>471</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QGroupBox" name="groupBox">
-         <property name="title">
-          <string>Type</string>
+     <property name="font">
+      <font>
+       <family>Consolas</family>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Type</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>90</y>
+       <width>311</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QComboBox" name="comboBox"/>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="SecondPage" native="true">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>0</y>
+      <width>511</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="horizontalLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>471</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>Type</string>
+        </property>
+        <widget class="QRadioButton" name="CrypRadioButt">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>20</y>
+           <width>82</width>
+           <height>17</height>
+          </rect>
          </property>
-         <widget class="QRadioButton" name="CrypRadioButt">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>20</y>
-            <width>82</width>
-            <height>17</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Encrypt</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-         <widget class="QRadioButton" name="DecrypRadioButton">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>40</y>
-            <width>82</width>
-            <height>17</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Decrypt</string>
-          </property>
-         </widget>
+         <property name="font">
+          <font>
+           <family>Georgia,Times New Roman,Times,fantasy</family>
+           <italic>true</italic>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#CrypRadioButt
+{
+	font-size: 4; 
+	font-family: Georgia, 'Times New Roman', Times, fantasy;
+    font-style: italic;
+}</string>
+         </property>
+         <property name="text">
+          <string>Encrypt</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
         </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="horizontalLayoutWidget_3">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>110</y>
-        <width>471</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <widget class="QTextEdit" name="inputText"/>
-       </item>
-       <item>
-        <widget class="QTextEdit" name="outputText"/>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QLabel" name="labelOne">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>90</y>
-        <width>81</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Text</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelTwo">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>90</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Crypto-text</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="HomeButton">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>270</y>
-        <width>101</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Generate new key</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="ExecuteButton">
-      <property name="geometry">
-       <rect>
-        <x>370</x>
-        <y>270</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Execute</string>
-      </property>
-     </widget>
+        <widget class="QRadioButton" name="DecrypRadioButton">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>40</y>
+           <width>82</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Georgia,Times New Roman,Times,fantasy</family>
+           <italic>true</italic>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#DecrypRadioButton
+{
+	    font-family: Georgia, 'Times New Roman', Times, fantasy;
+    font-style: italic;
+}</string>
+         </property>
+         <property name="text">
+          <string>Decrypt</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>110</y>
+       <width>471</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QTextEdit" name="inputText"/>
+      </item>
+      <item>
+       <widget class="QTextEdit" name="outputText"/>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QLabel" name="labelOne">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>90</y>
+       <width>121</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Consolas</family>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Text</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelTwo">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>90</y>
+       <width>111</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Consolas</family>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Crypto-text</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="HomeButton">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>270</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#HomeButton
+{
+	background-color: rgb(170, 255, 0);
+	border-radius: 5px;
+	border: 5px rgb(170, 255, 0);
+    border-style: solid;
+}
+#HomeButton:hover
+{	
+	background-color:rgb(29, 150, 255);
+	border-radius: 5px;
+	border: 5px rgb(29, 150, 255);
+    border-style: solid;
+}</string>
+     </property>
+     <property name="text">
+      <string>Generate new key</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="ExecuteButton">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>270</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#ExecuteButton
+{
+	background-color: rgb(9, 202, 170);
+	border-radius: 5px;
+	border: 5px  rgb(9, 202, 170);
+    border-style: solid;
+
+}
+#ExecuteButton:hover
+{	
+	background-color: rgb(29, 150, 255);
+	border-radius: 5px;
+	border: 5px rgb(29, 150, 255);
+    border-style: solid;
+}</string>
+     </property>
+     <property name="text">
+      <string>Execute</string>
+     </property>
     </widget>
    </widget>
   </widget>
@@ -218,7 +365,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>512</width>
+     <width>500</width>
      <height>21</height>
     </rect>
    </property>

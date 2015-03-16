@@ -5,33 +5,40 @@ MyCrypo::MyCrypo()
 
 }
 
-MyCrypo::MyCrypo(string val)
+MyCrypo::MyCrypo(QString val)
 {
     this->inputText = val;
 }
 
-void MyCrypo::setInputText(string val)
+void MyCrypo::setInputText(QString val)
 {
     this->inputText = val;
 }
 
-void MyCrypo::setOutputText(string val)
+void MyCrypo::setOutputText(QString val)
 {
     this->outputText = val;
 }
 
-string MyCrypo::getInputText()
+QString MyCrypo::getInputText()
 {
     return this->inputText;
 }
 
-string MyCrypo::getOutputText()
+QString MyCrypo::getOutputText()
 {
     return this->outputText;
 }
 
-string MyCrypo::encryption(string text)
+QString MyCrypo::encryption(QString text, int type, QString key)
 {
+    text.append("coding").append(" ").append(key).append(type);
+    return text;
+}
+
+QString MyCrypo::decryption(QString text, int type, QString key)
+{
+    text.append("decoding").append(" ").append(key).append(type);
     return text;
 }
 

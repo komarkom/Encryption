@@ -19,6 +19,8 @@ public:
 
     QString str;
 
+    MyCrypo *cryp;
+
 private slots:
     void on_CrypRadioButt_clicked();
 
@@ -29,6 +31,8 @@ private slots:
     void on_DecrypRadioButton_clicked();
 
     void on_HomeButton_clicked();
+
+    void on_ExecuteButton_clicked();
 
 private:
     Ui::MainWindow *ui;

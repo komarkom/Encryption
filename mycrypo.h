@@ -2,27 +2,29 @@
 #define MYCRYPO_H
 
 #include "string"
+#include "QString"
 
 using namespace std;
 
 class MyCrypo
 {
 private:
-    string inputText;
-    string outputText;
-    string code;
+    QString inputText;
+    QString outputText;
+    QString code;
 
 public:
     MyCrypo();
-    MyCrypo(string val);
+    MyCrypo(QString val);
 
-    void setInputText(string val);
-    void setOutputText(string val);
+    void setInputText(QString val);
+    void setOutputText(QString val);
 
-    string getInputText();
-    string getOutputText();
+    QString getInputText();
+    QString getOutputText();
 
-    string encryption(string text);
+    QString encryption(QString text,int type, QString key);
+    QString decryption(QString text, int type, QString key);
 
     ~MyCrypo();
 };
