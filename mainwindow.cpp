@@ -21,7 +21,12 @@ MainWindow::~MainWindow()
 void MainWindow::on_GeneratePushButton_clicked()
 {
     str = ui->keyValue->toPlainText();
-    ui->keyValue->setText(QString::number(qrand() % ((9999 + 1) - 100) + 100, 16) + QString::number(qrand() % ((9999 + 1) - 100) + 100, 16) + QString::number(qrand() % ((9999 + 1) - 100) + 100, 16));
+    QString key = "";
+    for (int i = 0; i < 16; i++)
+    {
+        key.append(QString::number(qrand() % 16, 16));
+    }
+    ui->keyValue->setText(key);
 }
 
 void MainWindow::on_CrypRadioButt_clicked()
