@@ -6,11 +6,13 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+//    QTextCodec *codec = QTextCodec::codecForName("UTF-8");
+//    QTextCodec::setCodecForTr(codec);
     ui->setupUi(this);
     ui->FirstPage->show();
     ui->SecondPage->hide();
-    ui->comboBox->addItem("1");
-
+    ui->comboBox->addItem("Ceasar");
+    ui->comboBox->addItem("Other");
     cryp = new MyCrypo();
 }
 
@@ -20,11 +22,10 @@ MainWindow::~MainWindow()
 }
 void MainWindow::on_GeneratePushButton_clicked()
 {
-    str = ui->keyValue->toPlainText();
     QString key = "";
     for (int i = 0; i < 16; i++)
     {
-        key.append(QString::number(qrand() % 16, 16));
+        key.append(QString::number((qrand()*clock()+i) % 16, 16));
     }
     ui->keyValue->setText(key);
 }
@@ -55,11 +56,40 @@ void MainWindow::on_HomeButton_clicked()
 
 void MainWindow::on_ExecuteButton_clicked()
 {
+    QString key = ui->keyValue->toPlainText();
     if(ui->CrypRadioButt->isChecked())
-    ui->outputText->setText(cryp->encryption(ui->inputText->toPlainText(), 1, str));
+        if(ui->comboBox->currentIndex() == 0)
+    ui->outputText->setText((cryp->encryption(ui->inputText->toPlainText(), 1, key)));
 
     if(ui->DecrypRadioButton->isChecked())
-    ui->outputText->setText(cryp->decryption(ui->inputText->toPlainText(), 1, str));
+        if(ui->comboBox->currentIndex() == 0)
+    ui->outputText->setText((cryp->decryption(ui->inputText->toPlainText(), 1, key)));
 
 
+}
+
+void MainWindow::on_openfile_clicked()
+{
+    fileName = QFileDialog::getOpenFileName(this, tr("Open File"),"",tr("*.*"));
+    QFile file(fileName);
+    if ( file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QTextStream in(&file);
+        QString text = in.readAll();
+        ui->inputText->setText(text);
+        file.close();
+    }
+}
+
+void MainWindow::on_savefile_clicked()
+{
+    fileName = QFileDialog::getSaveFileName(this, tr("Save File"),"",tr("Text file(*.txt *.doc)"));
+    QString testbuf = ui->outputText->toPlainText();
+    QFile file(fileName);
+    if ( file.open(QIODevice::WriteOnly | QIODevice::Text))
+            {
+                QTextStream stream( &file );
+                stream << testbuf << endl;
+                file.close();
+            }
 }
