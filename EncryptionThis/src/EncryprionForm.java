@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigInteger;
@@ -7,24 +8,30 @@ import java.math.BigInteger;
  * Created by komarov on 24.03.2015.
  */
 public class EncryprionForm extends JFrame{
-    private JButton generateButton;
+    private JPanel crypPanel;
     private JPanel rootPanel;
-    private JTextField secretKeyField;
-    private JTextField nKeyField;
-    private JTextField eKeyField;
+    private JPanel genKeyPanel;
+
     private JLabel eKey;
     private JLabel nKey;
     private JLabel secretKey;
     private JLabel textLabel;
     private JLabel crypLabel;
-    private JPanel crypPanel;
-    private JPanel genKeyPanel;
+    private JLabel selectRouteLabel;
+
+    private JButton generateButton;
     private JButton formCrypButton;
     private JButton backButton;
     private JButton executeButton;
+    private JButton routeButton;
+
+
     private JEditorPane inputTextField;
     private JEditorPane outputTextField;
-    private JButton routeButton;
+    private JTextField secretKeyField;
+    private JTextField nKeyField;
+    private JTextField eKeyField;
+
 
     boolean route = true;
 
@@ -37,17 +44,45 @@ public class EncryprionForm extends JFrame{
         return true;
     }
 
-    public EncryprionForm(){
-        super("hello");
-        setContentPane(rootPanel);
-        pack();
+    public void setStyle(){
+        System.setProperty("myBlack", "0X404244");
+        System.setProperty("myGreen", "0X5caa15");
+        rootPanel.setBackground(Color.getColor("myBlack"));
+        crypPanel.setBackground(Color.getColor("myBlack"));
+        genKeyPanel.setBackground(Color.getColor("myBlack"));
+
+        generateButton.setBackground(Color.getColor("myGreen"));
+        generateButton.setForeground(Color.WHITE);
+        formCrypButton.setBackground(Color.getColor("myGreen"));
+        formCrypButton.setForeground(Color.WHITE);
+        backButton.setBackground(Color.getColor("myGreen"));
+        backButton.setForeground(Color.WHITE);
+        executeButton.setBackground(Color.getColor("myGreen"));
+        executeButton.setForeground(Color.WHITE);
+        routeButton.setBackground(Color.getColor("myGreen"));
+        routeButton.setForeground(Color.WHITE);
+
+        eKey.setForeground(Color.WHITE);
+        nKey.setForeground(Color.WHITE);
+        secretKey.setForeground(Color.WHITE);
+        textLabel.setForeground(Color.WHITE);
+        crypLabel.setForeground(Color.WHITE);
+        selectRouteLabel.setForeground(Color.WHITE);
+
         genKeyPanel.setVisible(true);
         crypPanel.setVisible(false);
+    }
+
+    public EncryprionForm(){
+        super("EncryptionThis");
+        setContentPane(rootPanel);
+        pack();
+        setStyle();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
 
         final int bits = 1024;
         final RSA rsa = new RSA();
-
 
         generateButton.addActionListener(new ActionListener() {
             @Override
@@ -61,7 +96,6 @@ public class EncryprionForm extends JFrame{
         });
 
 
-        setVisible(true);
         formCrypButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
