@@ -2,12 +2,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.io.*;
 import java.math.BigInteger;
 
 /**
  * Created by komarov on 24.03.2015.
  */
 public class EncryprionForm extends JFrame{
+
     private JPanel crypPanel;
     private JPanel rootPanel;
     private JPanel genKeyPanel;
@@ -24,6 +27,8 @@ public class EncryprionForm extends JFrame{
     private JButton backButton;
     private JButton executeButton;
     private JButton routeButton;
+    private JButton saveKeyButton;
+    private JButton openKeyButton;
 
 
     private JEditorPane inputTextField;
@@ -31,13 +36,15 @@ public class EncryprionForm extends JFrame{
     private JTextField secretKeyField;
     private JTextField nKeyField;
     private JTextField eKeyField;
+    private JButton openFileButton;
+    private JButton saveFileButton;
 
 
+    private String filePath;
     boolean route = true;
 
     public static boolean isDigit(String q ){
-        for (int i = 0; i < q.length(); i++)
-        {
+        for (int i = 0; i < q.length(); i++){
             if(!Character.isDigit(q.charAt(i)))
                 return false;
         }
@@ -61,6 +68,10 @@ public class EncryprionForm extends JFrame{
         executeButton.setForeground(Color.WHITE);
         routeButton.setBackground(Color.getColor("myGreen"));
         routeButton.setForeground(Color.WHITE);
+        saveKeyButton.setBackground(Color.getColor("myGreen"));;
+        saveKeyButton.setForeground(Color.WHITE);;
+        openKeyButton.setBackground(Color.getColor("myGreen"));;
+        openKeyButton.setForeground(Color.WHITE);;
 
         eKey.setForeground(Color.WHITE);
         nKey.setForeground(Color.WHITE);
@@ -71,6 +82,7 @@ public class EncryprionForm extends JFrame{
 
         genKeyPanel.setVisible(true);
         crypPanel.setVisible(false);
+
     }
 
     public EncryprionForm(){
@@ -120,8 +132,7 @@ public class EncryprionForm extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(route)
-                {
+                if(route) {
                     routeButton.setText("Decryption");
                     textLabel.setText("Crypto-Text");
                     crypLabel.setText("Text");
@@ -138,21 +149,151 @@ public class EncryprionForm extends JFrame{
         executeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (rsa.getE() != null && rsa.getD() != null && rsa.getN()!= null) {
+                if (rsa.getE() != null && rsa.getD() != null && rsa.getN()!= null && !inputTextField.getText().isEmpty()) {
                     if (route) {
-                        String text = inputTextField.getText();
+                        String text = "j";
+                        text += inputTextField.getText();
                         BigInteger plaintext = new BigInteger(text.getBytes());
 
                         BigInteger ciphertext = rsa.encrypt(plaintext);
                         outputTextField.setText(ciphertext.toString());
-                    } else if(isDigit(inputTextField.getText())) {
-                        String text = inputTextField.getText();
-                        BigInteger plaintext = new BigInteger(text);
-                        plaintext = rsa.decrypt(plaintext);
-                        String text2 = new String(plaintext.toByteArray());
-                        outputTextField.setText(text2);
+                    } else {
+                        if ( isDigit(inputTextField.getText())) {
+                            String text = inputTextField.getText();
+                            BigInteger plaintext = new BigInteger(text);
+                            plaintext = rsa.decrypt(plaintext);
+                            String text2 = new String(plaintext.toByteArray());
+                            text2 = text2.substring(1, text2.length());
+                            outputTextField.setText(text2);
+                        }
+                        else JOptionPane.showMessageDialog(null, "Bad input parameters");
                     }
                 }
+                else JOptionPane.showMessageDialog(null, "Bad input parameters");
+            }
+        });
+        openKeyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JFileChooser c = new JFileChooser();
+                // Demonstrate "Open" dialog:
+                int rVal = c.showOpenDialog(EncryprionForm.this);
+                if (rVal == JFileChooser.APPROVE_OPTION) {
+                    filePath = c.getSelectedFile().getAbsolutePath();
+                    String sCurrentLine;
+                    BufferedReader br = null;
+                    try {
+                        br = new BufferedReader(new FileReader(filePath));
+                        sCurrentLine = br.readLine();
+                        if(sCurrentLine != null) {
+                            eKeyField.setText(sCurrentLine);
+                            sCurrentLine = br.readLine();
+                            if(sCurrentLine != null) {
+                                nKeyField.setText(sCurrentLine);
+                                sCurrentLine = br.readLine();
+                                if(sCurrentLine != null) {
+                                    secretKeyField.setText(sCurrentLine);
+                                    rsa.setKey(new BigInteger(eKeyField.getText()),new BigInteger(nKeyField.getText()),new BigInteger(secretKeyField.getText()));
+                                }
+                            }
+                        }
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+
+                }
+                if (rVal == JFileChooser.CANCEL_OPTION) {
+                    filePath = null;
+                }
+            }
+        });
+        saveKeyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser c = new JFileChooser();
+                // Demonstrate "Save" dialog:
+                int rVal = c.showSaveDialog(EncryprionForm.this);
+                if (rVal == JFileChooser.APPROVE_OPTION) {
+                    filePath = c.getSelectedFile().getAbsolutePath();
+                    PrintWriter writer = null;
+                    try {
+                        writer = new PrintWriter(filePath, "UTF-8");
+                        writer.println(eKeyField.getText());
+                        writer.println(nKeyField.getText());
+                        writer.println(secretKeyField.getText());
+                        writer.close();
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                    } catch (UnsupportedEncodingException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+                if (rVal == JFileChooser.CANCEL_OPTION) {
+                    filePath = null;
+                }
+            }
+        });
+        openFileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser c = new JFileChooser();
+                // Demonstrate "Open" dialog:
+                int rVal = c.showOpenDialog(EncryprionForm.this);
+                if (rVal == JFileChooser.APPROVE_OPTION) {
+                    filePath = c.getSelectedFile().getAbsolutePath();
+                    String sCurrentLine;
+                    String allText = "";
+                    BufferedReader br = null;
+                    try {
+                        br = new BufferedReader(
+                                new InputStreamReader(
+                                        new FileInputStream(filePath), "UTF8"));
+                        while ((sCurrentLine = br.readLine()) != null) {
+                            allText += sCurrentLine;
+                        }
+                        inputTextField.setText(allText);
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+                    if (rVal == JFileChooser.CANCEL_OPTION) {
+                        filePath = null;
+                    }
+                }
+            }
+
+        });
+
+        saveFileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JFileChooser c = new JFileChooser();
+                // Demonstrate "Save" dialog:
+                int rVal = c.showSaveDialog(EncryprionForm.this);
+                if (rVal == JFileChooser.APPROVE_OPTION) {
+                    filePath = c.getSelectedFile().getAbsolutePath();
+                    PrintWriter writer = null;
+                    try {
+                        writer = new PrintWriter(filePath, "UTF-8");
+                        writer.println(outputTextField.getText());
+                        writer.close();
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                    } catch (UnsupportedEncodingException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+                if (rVal == JFileChooser.CANCEL_OPTION) {
+                    filePath = null;
+                }
+
             }
         });
     }

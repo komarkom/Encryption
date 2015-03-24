@@ -86,6 +86,12 @@ public class RSA {
         return d;
     }
 
+    public synchronized void setKey(BigInteger newe, BigInteger newn, BigInteger newd){
+        e = newe;
+        n = newn;
+        d = newd;
+    }
+
 //    /** Trivial test program. */
 //    public static void main(String[] args) {
 //
