@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.komarov.cryptographer.crypto.activity.EncryptionActivity">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Text"
+            android:id="@+id/lab1text"
+            android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_marginTop="57dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/inputTextField" android:layout_below="@+id/lab1text" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Crypto-text"
+            android:id="@+id/lab2text"
+            android:layout_below="@+id/execute_btn" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/outputTextField" android:layout_below="@+id/lab2text" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/backText"
+            android:id="@+id/back_btn"
+            android:layout_marginBottom="37dp" android:onClick="GoToGenerate"
+            android:layout_alignParentBottom="true" android:layout_alignLeft="@+id/execute_btn"
+            android:layout_alignStart="@+id/execute_btn"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clearText"
+            android:id="@+id/clear_cr_btn"
+            android:layout_alignTop="@+id/back_btn" android:layout_alignRight="@+id/rout_btn"
+            android:layout_alignEnd="@+id/rout_btn" android:onClick="ClearText"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Execute"
+            android:id="@+id/execute_btn"
+            android:layout_marginTop="31dp"
+            android:layout_marginRight="28dp" android:layout_marginEnd="28dp"
+            android:layout_below="@+id/inputTextField" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" android:onClick="Execute"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Encryption"
+            android:id="@+id/rout_btn"
+            android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:onClick="SelrctRoute"/>
+</RelativeLayout>

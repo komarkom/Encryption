@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.komarov.cryptographer.crypto.activity.activity.activity.MainActivity">
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/send_btn_text"
+            android:id="@+id/send_btn"
+            android:layout_below="@+id/nKeyField" android:layout_toRightOf="@+id/generateKey"
+            android:layout_toEndOf="@+id/generateKey" android:onClick="sendSMS"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/eKeyField"
+            android:layout_below="@+id/Etext" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" android:onClick="sendSMS"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/nKeyField"
+            android:layout_below="@+id/Ntext" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/EtextLab"
+            android:id="@+id/Etext" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/NtextLab"
+            android:id="@+id/Ntext"
+            android:layout_below="@+id/eKeyField" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/generateText"
+            android:id="@+id/generateKey"
+            android:layout_alignTop="@+id/send_btn" android:layout_centerHorizontal="true"
+            android:onClick="GenerateKey"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/partnerEField"
+            android:layout_below="@+id/partnerEText" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/partnerNField"
+            android:layout_below="@+id/partnerEField" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_marginTop="29dp"
+            android:layout_alignParentRight="true" android:layout_alignParentEnd="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/partnerE"
+            android:id="@+id/partnerEText"
+            android:layout_below="@+id/generateKey" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/patnerN"
+            android:id="@+id/partnerNText"
+            android:layout_below="@+id/partnerEField" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nextText"
+            android:id="@+id/next_btn"
+            android:onClick="GoToEncryption"
+            android:layout_alignParentBottom="true" android:layout_alignRight="@+id/send_btn"
+            android:layout_alignEnd="@+id/send_btn"/>
+
+</RelativeLayout>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Cryptographer</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="send_btn_text">Send in sms</string>
+    <string name="NtextLab">N key</string>
+    <string name="EtextLab">E key</string>
+    <string name="generateText">Generate</string>
+    <string name="nextText">Next</string>
+    <string name="title_activity_encryption">encryption</string>
+    <string name="backText">Back</string>
+    <string name="clearText">Clear</string>
+    <string name="partnerE">Partner E key</string>
+    <string name="patnerN">Partner N key</string>
+</resources>
