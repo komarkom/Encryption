@@ -1,46 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context="com.komarov.cryptographer.crypto.activity.MainActivity">
-
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/send_btn_text"
-            android:id="@+id/send_btn"
-            android:onClick="sendSMS" android:layout_below="@+id/nKeyField" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            />
-
-
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:id="@+id/eKeyField"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:maxLines="3"
-            android:layout_below="@+id/Etext" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:id="@+id/nKeyField"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:maxLines="3"
-            android:layout_below="@+id/Ntext" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/EtextLab"
             android:id="@+id/Etext" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            />
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/send_btn_text"
+            android:id="@+id/send_btn"
+            android:onClick="sendSMS"
+            android:layout_above="@+id/partnerNText" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/eKeyField"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:maxLines="2"
+            android:layout_below="@+id/Etext"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/send_btn"
+            android:layout_toLeftOf="@+id/send_btn"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/nKeyField"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:maxLines="2"
+            android:layout_below="@+id/Ntext" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_toLeftOf="@+id/send_btn"
+            android:layout_toStartOf="@+id/send_btn"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,7 +47,7 @@
             android:text="@string/NtextLab"
             android:id="@+id/Ntext"
             android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:maxLines="3"
+            android:maxLines="2"
             android:layout_below="@+id/eKeyField" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
     <Button
@@ -57,35 +56,34 @@
             android:text="@string/generateText"
             android:id="@+id/generateKey"
             android:onClick="GenerateKey"
-            android:layout_alignTop="@+id/send_btn" android:layout_toLeftOf="@+id/send_btn"
-            android:layout_toStartOf="@+id/send_btn"
-            />
-
+            android:layout_alignBottom="@+id/nKeyField" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" android:layout_toRightOf="@+id/nKeyField"
+            android:layout_toEndOf="@+id/nKeyField"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/partnerEField"
             android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:maxLines="3"
-            android:layout_below="@+id/partnerEText" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
+            android:maxLines="2"
+            android:layout_below="@+id/partnerEText" android:layout_alignRight="@+id/nKeyField"
+            android:layout_alignEnd="@+id/nKeyField" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/partnerNField"
             android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:maxLines="3"
-            android:layout_below="@+id/partnerEField" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:layout_marginTop="29dp"
-            android:layout_alignParentRight="true" android:layout_alignParentEnd="true"/>
+            android:maxLines="2"
+            android:layout_below="@+id/partnerNText" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_alignRight="@+id/partnerEField"
+            android:layout_alignEnd="@+id/partnerEField"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/partnerE"
             android:id="@+id/partnerEText"
-            android:layout_below="@+id/generateKey" android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
     <TextView
             android:layout_width="wrap_content"
@@ -93,15 +91,16 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/patnerN"
             android:id="@+id/partnerNText"
-            android:layout_below="@+id/partnerEField" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_marginLeft="0dp"
+            android:layout_below="@+id/partnerEField"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nextText"
             android:id="@+id/next_btn"
             android:onClick="GoToEncryption"
-            android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" android:focusable="true"/>
-
+            android:focusable="true"
+            android:layout_alignParentBottom="true" android:layout_toRightOf="@+id/partnerNField"
+            android:layout_alignRight="@+id/send_btn" android:layout_alignEnd="@+id/send_btn"/>
 </RelativeLayout>

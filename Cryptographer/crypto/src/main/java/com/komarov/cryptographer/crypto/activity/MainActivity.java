@@ -1,5 +1,7 @@
 package com.komarov.cryptographer.crypto.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -64,9 +66,15 @@ public class MainActivity extends ActionBarActivity {
 
     public void GoToEncryption(View view){
         if (!partnerEkeyText.getText().toString().isEmpty() && !partnerNkeyText.getText().toString().isEmpty()){
-            partnerRsa.setKey(new BigInteger(partnerEkeyText.getText().toString()),new BigInteger(partnerNkeyText.getText().toString()), new BigInteger("0"));
-            Intent intent = new Intent(this, EncryptionActivity.class);
-            startActivity(intent);
+            if(EncryptionActivity.isDigit(partnerEkeyText.getText().toString()) && EncryptionActivity.isDigit(partnerNkeyText.getText().toString())) {
+                partnerRsa.setKey(new BigInteger(partnerEkeyText.getText().toString()), new BigInteger(partnerNkeyText.getText().toString()), new BigInteger("0"));
+                Intent intent = new Intent(this, EncryptionActivity.class);
+                startActivity(intent);
+            }
+            else {
+                Toast.makeText(this, "Bad key", Toast.LENGTH_LONG).show();
+            }
+
         }
         else {
             Toast toast = Toast.makeText(this, "Set partner key", Toast.LENGTH_LONG);
@@ -82,9 +90,35 @@ public class MainActivity extends ActionBarActivity {
 
     public void sendSMS(View v)
     {
-        Intent sendIntent = new Intent(Intent.ACTION_VIEW);
-        sendIntent.putExtra("sms_body", String.valueOf(rsa.getE()) + " " + String.valueOf(rsa.getN()));
-        sendIntent.setType("vnd.android-dir/mms-sms");
-        startActivity(sendIntent);
+            Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+            sendIntent.putExtra("sms_body", String.valueOf(rsa.getE()) + " " + String.valueOf(rsa.getN()));
+            sendIntent.setType("vnd.android-dir/mms-sms");
+            startActivity(sendIntent);
+    }
+
+    public void onAbout(MenuItem item){
+        Toast.makeText(getApplicationContext(), "product by komarov", Toast.LENGTH_SHORT).show();
+    }
+
+    public void onHelp(MenuItem item){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Help")
+                .setMessage(getString(R.string.HelpText))
+                .setCancelable(true)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

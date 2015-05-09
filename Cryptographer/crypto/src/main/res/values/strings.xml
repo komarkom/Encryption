@@ -1,17 +1,30 @@
 <resources>
     <string name="app_name">Cryptographer</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Cryptographer</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">About</string>
     <string name="send_btn_text">Send in sms</string>
     <string name="NtextLab">N key</string>
     <string name="EtextLab">E key</string>
     <string name="generateText">Generate</string>
     <string name="nextText">Next</string>
-    <string name="title_activity_encryption">encryption</string>
-    <string name="backText">Back</string>
+    <string name="title_activity_encryption">Encryption</string>
+    <string name="backText">Reset key</string>
     <string name="clearText">Clear</string>
     <string name="partnerE">Partner E key</string>
     <string name="patnerN">Partner N key</string>
+    <string name="HelpText">Данное приложение позволяет вам использовать любые каналы связи, не боясь за утечку информации. Приложение позволяет зашифровать сообщение ключом RSA.\n
+        1. Сгенерируйте ключ кнопкой \"Generate\"\\\"Сгенерировать\".\n\n
+        2. Отправьте свои открытые ключи своему партнеру кнопкой \"Send in sms\"\\\"Отправить по смс\".\n\n
+        3. Получите ключи от своего партнера и вставьте их в соответсвующие поля. Первое число в поле \"E key\", второе в \"N key\".\n\n
+        4. Если вы хотите проверить работу приложения, вставьте в соответсвующие поля свои сгенерированные ключи.\n\n
+        5. Перейдите кнопкой \"Next\" к следующему экрану.\n\n
+        6. Выберите направление работы Шифрование или дешифрование кнопкой \"Encryption\"\\\"Decryption\" направление работы отображается в названии кнопки.\n
+        7. Очистите поля ввода, если требуется, кнопкой \"Clear\" \\ \"Очистить\".\n
+        8. Введите текст для собеседника или криптотекст, полученный от него. Исполните шифровку\\дешифровку кнопкой \"Execute\"\\\"Выполнить\".\n
+        9. Скопируйте результат из второго поля кнопкой \"Copy to clipboard\"\\\"Скопировать в буфер\".\n
+        10. Перешлите сообщение собеседнику  по любому удобному вам каналу.\n
+        11. Кнопка \"Reset key\" сбрасывает ключи и возвращает вас на главный экран.\n
+        12. При выключении приложения ключи сбрасываются, канал связи необходимо настроить заново.</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.komarov.cryptographer.crypto.activity;
 
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -40,27 +42,6 @@ public class EncryptionActivity extends ActionBarActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_encryption, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     public static boolean isDigit(String q ){
         for (int i = 0; i < q.length(); i++){
@@ -148,5 +129,11 @@ public class EncryptionActivity extends ActionBarActivity {
     public void ClearText(View view){
         inputText.setText("");
         outputText.setText("");
+    }
+
+    public void CopyText(View view){
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("",outputText.getText().toString());
+        clipboard.setPrimaryClip(clip);
     }
 }
